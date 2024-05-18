@@ -1,0 +1,23 @@
+.container {
+    width: 100%;
+    overflow: auto;
+    margin: 0px;
+    padding: 0px;
+}
+
+
+
+.container div {
+  
+    height: 52em;
+    width: 100%;
+    border: 1px solid white;
+     justify-content: center; /* Center horizontally */
+    align-items: center;
+    text-align: center;
+}
+
+#containerB {
+    background-color: yellowgreen;
+    color: red;
+   }
