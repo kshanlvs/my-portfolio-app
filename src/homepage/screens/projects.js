@@ -106,10 +106,10 @@ const Skills = () => {
       <Typography variant="h6" color="#002147" fontWeight="bold" sx={{ fontSize: '15px' }}>
         My Skills
       </Typography>
-      <Typography variant='h3' fontWeight="bold" >
+      <Typography variant='h2' fontWeight="bold" >
         Let's explore popular
       </Typography>
-      <Typography variant="h3" fontWeight="bold" color="#002147" sx={{ marginBottom: '10px' }}>
+      <Typography variant="h2" fontWeight="bold" color="#002147" sx={{ marginBottom: '10px' }}>
         Skills & Experience
       </Typography>
       <Typography variant="body2">
@@ -129,7 +129,7 @@ const Project = () => {
     <ParentContainer>
       <Skills />
       <ProjectContainer>
-        <Grid container spacing={2} justifyContent="center">
+        <Grid container spacing={2} justifyContent="center" marginBottom={10}>
           {items.map((item) => (
             <Grid item xs={12} sm={6} md={4} lg={2} key={item.id}> {/* Adjusted grid layout */}
               <CustomCard
