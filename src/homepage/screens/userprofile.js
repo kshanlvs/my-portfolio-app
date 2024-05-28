@@ -3,6 +3,9 @@ import { Avatar, Typography, Box } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Button, styled } from '@mui/material';
 import DownloadIcon from '@mui/icons-material/Download'; 
+import { styledButton } from '@mui/system';
+
+
 
 const CustomButton = styled(Button)({
   height: 50,
@@ -19,18 +22,24 @@ const CustomButton = styled(Button)({
 
 
 const ResumeButton = styled(Button)({
-  height: 50,
-  width: 500,
-  marginTop: 50, // Margin top of 50px
-  backgroundColor: 'rgba(0, 0, 0, 0.5)', // Transparent black background color
-  color: '#808080', // Gray text color
+  marginTop: 50,
+  backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  color: '#808080',
   fontSize: 25,
-  borderRadius: '10px', // Rounded corners
+  borderRadius: '10px',
   '&:hover': {
-    backgroundColor: 'rgba(0, 0, 0, 0.7)', // Darker shade of transparent black on hover
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    color: '#ffffff', // Change text color to white on hover
+    '& .MuiButton-icon': {
+      color: '#ffffff', // Change icon color to white on hover
+    },
+  },
+  '@media (max-width: 600px)': {
+    width: '100%', // Set width to 100% on smaller screens
+    maxWidth: 'none', // Remove max-width on smaller screens
+    fontSize: 20, // Adjust font size for smaller screens
   },
 });
-
 
 const resumeUrl = '/images/NAUKRI_KISHAN_SHARMA.pdf'; 
 const handleDownload = () => {

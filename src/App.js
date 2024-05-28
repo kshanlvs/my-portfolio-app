@@ -6,6 +6,8 @@ import Project from './homepage/screens/projects';
 import MyComponent from './homepage/screens/certificates';
 import { Container, Box } from '@mui/material';
 import Project2 from './homepage/screens/project2';
+import Achievements from './homepage/screens/achivements';
+
 
 
 
@@ -28,7 +30,9 @@ function App() {
           backgroundImage: "url('/images/tech2.jpg')", // Replace '/images/your_background_image.jpg' with the actual path to your background image file
           backgroundSize: "cover", // Adjust the size of the background image
           backgroundPosition: "center", // Center the background image
-}}
+        }
+
+        }
       >
         <Container>
           <MyComponent />
@@ -37,6 +41,15 @@ function App() {
 
         </Container>
       </Box>
+
+      <div>
+
+
+        <Achievements />
+
+      </div>
+
+
 
 
     </div>

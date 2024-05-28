@@ -1,5 +1,7 @@
 import React from 'react';
-import { Grid, Typography, Button, Box } from '@mui/material';
+import { Grid, Typography, Button, Box, Link } from '@mui/material';
+import LaunchIcon from '@mui/icons-material/LaunchOutlined';
+
 
 const MyComponent = () => {
   return (
@@ -42,8 +44,8 @@ const MyComponent = () => {
           <Typography variant="body1" paragraph sx={{ color: 'grey', textAlign: 'left' }}>
             Jobs in Education: Bridging Gaps in Educational Employment
           </Typography>
-          <Button variant="contained" sx={{ backgroundColor: '#ec390c', color: 'white', textAlign: 'left', mt: 2 }}>
-            Click Me
+          <Button endIcon={<LaunchIcon/>}  variant="contained" sx={{ backgroundColor: '#ec390c', color: 'white', textAlign: 'left', mt: 2 }}>
+            Project Link
           </Button>
         </Grid>
       </Grid>
