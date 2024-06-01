@@ -41,7 +41,7 @@ const ResumeButton = styled(Button)({
   },
 });
 
-const resumeUrl = '/images/NAUKRI_KISHAN_SHARMA.pdf'; 
+const resumeUrl = '/images/kishan-flutter-resume.pdf'; 
 const handleDownload = () => {
   // Create a hidden link and trigger a click event to download the resume
   const link = document.createElement('a');
