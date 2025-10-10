@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Card, CardMedia, Grid, Typography } from '@mui/material';
+import { Box, Card, CardMedia, Grid, Typography, Link, Container } from '@mui/material';
 
 const certificates = [
   {
@@ -15,35 +15,87 @@ const certificates = [
   // Add more certificates as needed
 ];
 
-const Certificates = () => {
+const Achievements = () => {
   return (
     <Box
       sx={{
-        backgroundImage: "url('/images/achivements.jpg')", // Replace with the actual path to your background image file
-        backgroundSize: "cover", // Adjust the size of the background image
-        backgroundPosition: "center", // Center the background image
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-       // Ensure it takes the full viewport height
-        paddingTop: 15,
-        paddingBottom: 15,
+        py: { xs: 10, md: 14 },
       }}
     >
-      <Typography variant="h3" component="div" gutterBottom sx={{ textAlign: 'center', color: '#002147', fontWeight:"bold", paddingBottom:"10px" }}>
-        Certificates & <span style={{ color: '#ec390c' }}>Badges</span>
-      </Typography>
-      <Grid container spacing={3} justifyContent="center">
+      {/* Section Header */}
+      <Box sx={{ textAlign: 'center', mb: 10 }}>
+        <Typography
+          variant="overline"
+          sx={{ color: '#ec390c', letterSpacing: 2, fontWeight: 600 }}
+        >
+          Achievements
+        </Typography>
+        <Typography
+          variant="h3"
+          sx={{
+            fontWeight: 'bold',
+            color: 'white',
+            mt: 1,
+            mb: 2,
+            lineHeight: 1.2,
+          }}
+        >
+          Certificates & <Box component="span" sx={{ color: '#ec390c' }}>Badges</Box>
+        </Typography>
+        <Typography
+          variant="body1"
+          sx={{ color: '#e0e0e0', maxWidth: 600, mx: 'auto', fontSize: '1.1rem' }}
+        >
+          I have earned several certifications that showcase my expertise in modern web and mobile technologies. Each certificate represents a milestone in my learning journey.
+        </Typography>
+      </Box>
+
+      {/* Certificates Grid */}
+      <Grid container spacing={6} justifyContent="center">
         {certificates.map((certificate) => (
           <Grid item xs={12} sm={6} md={4} key={certificate.id}>
-            <Card >
-              <CardMedia
-                component="img"
-                image={certificate.imageUrl}
-                alt={`Certificate ${certificate.id}`}
-              />
-            </Card>
+            <Link href={certificate.link} target="_blank" underline="none">
+              <Card
+                sx={{
+                  borderRadius: 3,
+                  overflow: 'hidden',
+                  boxShadow: '0 10px 30px rgba(0,0,0,0.3)',
+                  transition: 'all 0.4s ease',
+                  '&:hover': {
+                    transform: 'translateY(-10px) scale(1.05)',
+                    boxShadow: '0 20px 60px rgba(236,57,12,0.5)',
+                  },
+                  cursor: 'pointer',
+                  background: 'rgba(255,255,255,0.05)',
+                }}
+              >
+                <Box sx={{ position: 'relative' }}>
+                  <CardMedia
+                    component="img"
+                    image={certificate.imageUrl}
+                    alt={`Certificate ${certificate.id}`}
+                    sx={{
+                      width: '100%',
+                      height: { xs: 220, md: 260 },
+                      objectFit: 'cover',
+                      filter: 'brightness(0.9)',
+                      transition: 'all 0.3s ease',
+                    }}
+                  />
+                  <Box
+                    sx={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      width: '100%',
+                      height: '100%',
+                      background:
+                        'linear-gradient(to top, rgba(236,57,12,0.05), rgba(0,0,0,0.2))',
+                    }}
+                  />
+                </Box>
+              </Card>
+            </Link>
           </Grid>
         ))}
       </Grid>
@@ -51,4 +103,19 @@ const Certificates = () => {
   );
 };
 
-export default Certificates;
+// Wrapper Component with Gradient Background
+const AchievementsSection = () => (
+  <Box
+    sx={{
+      background: 'linear-gradient(135deg, #0f2027, #203a43, #2c5364)',
+      color: 'white',
+      py: 12,
+    }}
+  >
+    <Container maxWidth="lg">
+      <Achievements />
+    </Container>
+  </Box>
+);
+
+export default AchievementsSection;

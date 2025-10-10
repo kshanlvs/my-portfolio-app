@@ -1,125 +1,160 @@
 import React from 'react';
-import { Avatar, Typography, Box } from '@mui/material';
+import { Avatar, Typography, Box, Button, styled } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { Button, styled } from '@mui/material';
-import DownloadIcon from '@mui/icons-material/Download'; 
-import { styledButton } from '@mui/system';
+import DownloadIcon from '@mui/icons-material/Download';
+import { motion } from 'framer-motion';
 
-
-
-const CustomButton = styled(Button)({
+// ===== Styled Buttons =====
+const HireButton = styled(Button)({
   height: 50,
   width: 250,
-  marginTop: 50, // Margin top of 50px
-  backgroundColor: '#FFA500', // Orange background color
-  color: '#002147', // Oxford Blue text color
-  fontSize: 25,
-  borderRadius: '10px', // Rounded corners
+  backgroundColor: '#FFA500', // Orange background
+  color: '#002147', // Dark text
+  fontSize: 20,
+  fontWeight: 'bold',
+  borderRadius: '12px',
+  textTransform: 'none',
   '&:hover': {
-    backgroundColor: '#FF8C00', // Darker shade of orange on hover
+    backgroundColor: '#FF8C00', // Darker orange
+    transform: 'translateY(-2px)',
+    transition: 'all 0.3s ease',
   },
 });
-
 
 const ResumeButton = styled(Button)({
-  marginTop: 50,
-  backgroundColor: 'rgba(0, 0, 0, 0.5)',
-  color: '#808080',
-  fontSize: 25,
-  borderRadius: '10px',
+  height: 50,
+  width: 250,
+  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+  color: '#FFA500',
+  fontSize: 20,
+  fontWeight: 'bold',
+  borderRadius: '12px',
+  textTransform: 'none',
   '&:hover': {
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
-    color: '#ffffff', // Change text color to white on hover
-    '& .MuiButton-icon': {
-      color: '#ffffff', // Change icon color to white on hover
-    },
+    backgroundColor: '#FFA500',
+    color: '#002147',
+    transform: 'translateY(-2px)',
+    transition: 'all 0.3s ease',
   },
   '@media (max-width: 600px)': {
-    width: '100%', // Set width to 100% on smaller screens
-    maxWidth: 'none', // Remove max-width on smaller screens
-    fontSize: 20, // Adjust font size for smaller screens
+    width: '100%',
   },
 });
 
-const resumeUrl = '/images/kishan-flutter-resume.pdf'; 
+// ===== Resume Handlers =====
+const resumeUrl = 'https://drive.google.com/uc?export=download&id=1iTl-VVt3bSyEZhdobS9rhw4yFv_Zy6Bm';
+
 const handleDownload = () => {
-  // Create a hidden link and trigger a click event to download the resume
   const link = document.createElement('a');
   link.href = resumeUrl;
-  link.download = "kishan_sharma_resume.pdf"; // Set the default file name for download
+  link.download = 'kishan_sharma_resume.pdf'; // default file name
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
 };
 
+
+
 const handleView = () => {
-  // Open the resume in a new tab/window for viewing
   window.open(resumeUrl, '_blank');
 };
 
+// ===== Main Component =====
 const UserProfile = () => {
   return (
     <Box
+      id="user-profile"
       display="flex"
       flexDirection="column"
       alignItems="center"
       justifyContent="center"
-      paddingBottom="50px"
-      paddingTop="50px"
+      py={{ xs: 6, md: 12 }}
+      px={{ xs: 2, md: 8 }}
+      sx={{
+        background: 'linear-gradient(135deg, #1a1a1a 0%, #111 100%)',
+        borderRadius: '20px',
+        textAlign: 'center',
+        color: 'white',
+      }}
     >
-      <Avatar
-        alt="User"
-        src="/images/user-profile.png"
-        sx={{ width: 250, height: 250 }}
-      />
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <Avatar
+          alt="Kishan Sharma"
+          src="/images/user-profile.png"
+          sx={{
+            width: { xs: 180, sm: 220, md: 250 },
+            height: { xs: 180, sm: 220, md: 250 },
+            margin: '0 auto',
+            border: '4px solid #FFA500',
+            boxShadow: '0px 10px 30px rgba(255, 165, 0, 0.4)',
+          }}
+        />
 
-      <Typography
-        variant="h5"
-        component="p"
-        color="white"
-        fontSize={{ xs: 30, sm: 40, md: 50 }} // Adjust font size based on screen size
-        sx={{
-          mt: 2,
-          fontWeight: 'bold',
-          textAlign: 'center',
-          px: { xs: 2, sm: 4, md: 8 }, // Adjust padding based on screen size
-        }}
-      >
-        Hi, I'm a FLUTTER DEVELOPER
-      </Typography>
-      <Typography
-        variant="h5"
-        component="p"
-        color="orange"
-        sx={{
-          mt: 2,
-          textAlign: 'center',
-          px: { xs: 2, sm: 4, md: 8 }, // Adjust padding based on screen size
-        }}
-      >
-        Specialist in building natively compiled applications for mobile, web, and desktop from a single
-        codebase using Google's Flutter framework.
-      </Typography>
-      <Box
-        display="flex"
-        flexDirection={{ xs: 'column', sm: 'row' }} // Column on small screens, row on larger screens
-        alignItems="center"
-        justifyContent="center"
-        gap={2} // Add some space between the buttons
-        sx={{ mt: 4 }}
-      >
-        <CustomButton
-          variant="contained"
-          endIcon={<ArrowForwardIcon />} // Adding arrow icon at the end
+        <Typography
+          variant="h4"
+          sx={{
+            mt: 4,
+            fontWeight: 'bold',
+            fontSize: { xs: 28, sm: 36, md: 42 },
+          }}
         >
-          HIRE ME
-        </CustomButton>
-        <ResumeButton onClick={handleDownload}
-      endIcon={<DownloadIcon />} // Add the download icon
-    >
-      Download Resume
-    </ResumeButton>
-      </Box>
+          Hi, I'm Kishan Sharma
+        </Typography>
+
+        <Typography
+          variant="h6"
+          sx={{
+            mt: 2,
+            color: '#FFA500',
+            fontSize: { xs: 18, sm: 20, md: 22 },
+            fontWeight: 500,
+          }}
+        >
+          Flutter & Fullstack Developer
+        </Typography>
+
+        <Typography
+          variant="body1"
+          sx={{
+            mt: 3,
+            color: '#b0b0b0',
+            maxWidth: { xs: '90%', md: '700px' },
+            fontSize: { xs: 16, sm: 17, md: 18 },
+            lineHeight: 1.6,
+          }}
+        >
+          I specialize in building beautiful and responsive mobile and web applications with Flutter, React, and Firebase. Passionate about clean architecture, scalability, and creating delightful user experiences.
+        </Typography>
+
+        {/* Buttons */}
+        <Box
+          display="flex"
+          flexDirection={{ xs: 'column', sm: 'row' }}
+          gap={2}
+          justifyContent="center"
+          mt={5}
+        >
+          <HireButton
+            variant="contained"
+            endIcon={<ArrowForwardIcon />}
+            onClick={() => alert('Hire me clicked!')}
+          >
+            HIRE ME
+          </HireButton>
+
+          <ResumeButton
+            variant="contained"
+            endIcon={<DownloadIcon />}
+            onClick={handleDownload}
+          >
+            Download Resume
+          </ResumeButton>
+        </Box>
+      </motion.div>
     </Box>
   );
 };
