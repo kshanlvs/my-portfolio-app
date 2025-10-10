@@ -138,7 +138,7 @@ const Project = () => {
                 percentage={item.percentage}
               />
             </Grid>
-          ))}
+          ))}     
         </Grid>
       </ProjectContainer>
     </ParentContainer>
