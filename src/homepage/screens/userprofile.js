@@ -5,28 +5,31 @@ import DownloadIcon from '@mui/icons-material/Download';
 import { motion } from 'framer-motion';
 
 // ===== Styled Buttons =====
-const HireButton = styled(Button)({
+const HireButton = styled(Button)(({ theme }) => ({
   height: 50,
   width: 250,
-  backgroundColor: '#FFA500', // Orange background
-  color: '#002147', // Dark text
-  fontSize: 20,
+  backgroundColor: '#FFA500',
+  color: '#002147',
+  fontSize: 18,
   fontWeight: 'bold',
   borderRadius: '12px',
   textTransform: 'none',
   '&:hover': {
-    backgroundColor: '#FF8C00', // Darker orange
+    backgroundColor: '#FF8C00',
     transform: 'translateY(-2px)',
     transition: 'all 0.3s ease',
   },
-});
+  [theme.breakpoints.down('sm')]: {
+    width: '100%',
+  },
+}));
 
-const ResumeButton = styled(Button)({
+const ResumeButton = styled(Button)(({ theme }) => ({
   height: 50,
   width: 250,
   backgroundColor: 'rgba(255, 255, 255, 0.1)',
   color: '#FFA500',
-  fontSize: 20,
+  fontSize: 18,
   fontWeight: 'bold',
   borderRadius: '12px',
   textTransform: 'none',
@@ -36,10 +39,10 @@ const ResumeButton = styled(Button)({
     transform: 'translateY(-2px)',
     transition: 'all 0.3s ease',
   },
-  '@media (max-width: 600px)': {
+  [theme.breakpoints.down('sm')]: {
     width: '100%',
   },
-});
+}));
 
 // ===== Resume Handlers =====
 const resumeUrl = 'https://drive.google.com/uc?export=download&id=1iTl-VVt3bSyEZhdobS9rhw4yFv_Zy6Bm';
@@ -47,16 +50,10 @@ const resumeUrl = 'https://drive.google.com/uc?export=download&id=1iTl-VVt3bSyEZ
 const handleDownload = () => {
   const link = document.createElement('a');
   link.href = resumeUrl;
-  link.download = 'kishan_sharma_resume.pdf'; // default file name
+  link.download = 'kishan_sharma_resume.pdf';
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
-};
-
-
-
-const handleView = () => {
-  window.open(resumeUrl, '_blank');
 };
 
 // ===== Main Component =====
@@ -86,8 +83,8 @@ const UserProfile = () => {
           alt="Kishan Sharma"
           src="/images/user-profile.png"
           sx={{
-            width: { xs: 180, sm: 220, md: 250 },
-            height: { xs: 180, sm: 220, md: 250 },
+            width: { xs: 140, sm: 180, md: 220 },
+            height: { xs: 140, sm: 180, md: 220 },
             margin: '0 auto',
             border: '4px solid #FFA500',
             boxShadow: '0px 10px 30px rgba(255, 165, 0, 0.4)',
@@ -97,9 +94,9 @@ const UserProfile = () => {
         <Typography
           variant="h4"
           sx={{
-            mt: 4,
+            mt: 3,
             fontWeight: 'bold',
-            fontSize: { xs: 28, sm: 36, md: 42 },
+            fontSize: { xs: 24, sm: 32, md: 40 },
           }}
         >
           Hi, I'm Kishan Sharma
@@ -108,9 +105,9 @@ const UserProfile = () => {
         <Typography
           variant="h6"
           sx={{
-            mt: 2,
+            mt: 1.5,
             color: '#FFA500',
-            fontSize: { xs: 18, sm: 20, md: 22 },
+            fontSize: { xs: 16, sm: 18, md: 20 },
             fontWeight: 500,
           }}
         >
@@ -120,10 +117,10 @@ const UserProfile = () => {
         <Typography
           variant="body1"
           sx={{
-            mt: 3,
+            mt: 2.5,
             color: '#b0b0b0',
-            maxWidth: { xs: '90%', md: '700px' },
-            fontSize: { xs: 16, sm: 17, md: 18 },
+            maxWidth: { xs: '90%', sm: '80%', md: '700px' },
+            fontSize: { xs: 14, sm: 16, md: 18 },
             lineHeight: 1.6,
           }}
         >
@@ -136,7 +133,7 @@ const UserProfile = () => {
           flexDirection={{ xs: 'column', sm: 'row' }}
           gap={2}
           justifyContent="center"
-          mt={5}
+          mt={4}
         >
           <HireButton
             variant="contained"

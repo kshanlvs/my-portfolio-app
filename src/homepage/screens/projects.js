@@ -1,4 +1,3 @@
-// src/homepage/screens/ProjectsSection.js
 import React from "react";
 import { Box, Grid, Typography, Button, CircularProgress, styled } from "@mui/material";
 import LaunchIcon from "@mui/icons-material/LaunchOutlined";
@@ -46,50 +45,59 @@ const projects = [
 ];
 
 // ===== Styled Components =====
-const SectionWrapper = styled(Box)({
-  background: '#121212',
+const SectionWrapper = styled(Box)(({ theme }) => ({
+  background: '#1a1a1a',
   color: '#ffffff',
   padding: '80px 60px',
   borderRadius: '20px',
   margin: '40px 0',
-});
+  [theme.breakpoints.down('sm')]: {
+    padding: '50px 20px',
+  },
+}));
 
 const SectionHeader = styled(Box)({
   textAlign: 'center',
   marginBottom: '50px',
 });
 
-const Title = styled(Typography)({
+const Title = styled(Typography)(({ theme }) => ({
   fontSize: '2.5rem',
   fontWeight: 700,
-  '@media (max-width:600px)': { fontSize: '2rem' },
-});
+  [theme.breakpoints.down('sm')]: { fontSize: '2rem' },
+}));
 
 const Highlight = styled('span')({
-  color: '#00bcd4',
+  color: '#FFA500', // yellow highlight
 });
 
-const Description = styled(Typography)({
+const Description = styled(Typography)(({ theme }) => ({
   color: '#b0b0b0',
   fontSize: '1rem',
   maxWidth: '600px',
   margin: '15px auto 0 auto',
   lineHeight: 1.6,
-});
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '0.9rem',
+  },
+}));
 
-const SkillCard = styled(Box)({
+const SkillCard = styled(Box)(({ theme }) => ({
   background: 'rgba(255, 255, 255, 0.05)',
-  backdropFilter: 'blur(8px)',
-  borderRadius: '16px',
+  backdropFilter: 'blur(10px)',
+  borderRadius: '20px',
   textAlign: 'center',
-  padding: '25px 20px',
+  padding: '30px 20px',
   transition: 'all 0.3s ease',
   border: '1px solid rgba(255, 255, 255, 0.1)',
   '&:hover': {
-    transform: 'translateY(-8px)',
-    boxShadow: '0 8px 30px rgba(0, 188, 212, 0.4)',
+    transform: 'translateY(-10px)',
+    boxShadow: '0 10px 30px rgba(255, 165, 0, 0.3)',
   },
-});
+  [theme.breakpoints.down('sm')]: {
+    padding: '20px 15px',
+  },
+}));
 
 const Logo = styled('img')({
   width: '60px',
@@ -105,7 +113,7 @@ const PercentageCircle = ({ value }) => (
       thickness={5}
       size={60}
       sx={{
-        color: '#00bcd4',
+        color: '#FFA500',
         '& .MuiCircularProgress-circle': { strokeLinecap: 'round' },
       }}
     />
@@ -128,32 +136,38 @@ const PercentageCircle = ({ value }) => (
   </Box>
 );
 
-const ProjectButton = styled(Button)({
-  backgroundColor: '#00bcd4',
-  color: '#121212',
+const ProjectButton = styled(Button)(({ theme }) => ({
+  backgroundColor: '#FFA500',
+  color: '#002147',
   px: 4,
   py: 1.2,
   borderRadius: '8px',
   fontWeight: 'bold',
   textTransform: 'none',
   '&:hover': {
-    backgroundColor: '#00acc1',
+    backgroundColor: '#FF8C00',
     transform: 'translateY(-2px)',
     transition: 'all 0.3s ease',
   },
-});
+  [theme.breakpoints.down('sm')]: {
+    width: '100%',
+  },
+}));
 
-const ProjectImage = styled(Box)({
+const ProjectImage = styled(Box)(({ theme }) => ({
   width: '100%',
   height: 'auto',
   borderRadius: '16px',
-  boxShadow: '0px 15px 50px rgba(0, 0, 0, 0.5)',
+  boxShadow: '0px 20px 60px rgba(0, 0, 0, 0.6)',
   transition: 'transform 0.4s ease, box-shadow 0.4s ease',
   '&:hover': {
     transform: 'scale(1.03)',
-    boxShadow: '0px 20px 70px rgba(0, 188, 212, 0.6)',
+    boxShadow: '0px 25px 70px rgba(0, 0, 0, 0.7)',
   },
-});
+  [theme.breakpoints.down('sm')]: {
+    marginTop: '20px',
+  },
+}));
 
 // ===== Main Component =====
 const ProjectsSection = () => {
@@ -206,7 +220,10 @@ const ProjectsSection = () => {
             container
             spacing={6}
             alignItems="center"
-            sx={{ flexDirection: { xs: "column", md: isEven ? "row" : "row-reverse" }, mb: 12 }}
+            sx={{
+              flexDirection: { xs: "column", md: isEven ? "row" : "row-reverse" },
+              mb: 12,
+            }}
             key={project.id}
           >
             {/* Text */}
@@ -216,15 +233,42 @@ const ProjectsSection = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                <Typography variant="h6" sx={{ color: '#00bcd4', textTransform: "uppercase", letterSpacing: "1px", mb: 1, fontWeight: 600 }}>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    color: '#FFA500',
+                    textTransform: "uppercase",
+                    letterSpacing: "1px",
+                    mb: 1,
+                    fontWeight: 600,
+                    fontSize: { xs: 12, sm: 14, md: 16 },
+                  }}
+                >
                   {project.type}
                 </Typography>
 
-                <Typography variant="h4" sx={{ color: '#ffffff', fontWeight: 700, mb: 2 }}>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    color: '#ffffff',
+                    fontWeight: 700,
+                    mb: 2,
+                    fontSize: { xs: 20, sm: 24, md: 28 },
+                  }}
+                >
                   {project.title}
                 </Typography>
 
-                <Typography variant="body1" sx={{ color: '#b0b0b0', fontSize: '1.1rem', lineHeight: 1.6, mb: 3, maxWidth: '90%' }}>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: '#b0b0b0',
+                    fontSize: { xs: 14, sm: 16, md: 18 },
+                    lineHeight: 1.6,
+                    mb: 3,
+                    maxWidth: '90%',
+                  }}
+                >
                   {project.description}
                 </Typography>
 
