@@ -7,7 +7,6 @@ import Achievements from "./homepage/screens/achivements";
 import ScalabilitySection from "./homepage/screens/scalability";
 import AgileSection from "./homepage/screens/agile";
 import ScalableDevelopment from "./homepage/screens/scalableDevelopment";
-import SideProjects from "./homepage/screens/sideprojects"; // <-- new import
 import ContactSection from "./homepage/screens/contact"; // <-- new import
 
 
@@ -15,6 +14,8 @@ import ContactSection from "./homepage/screens/contact"; // <-- new import
 <Container maxWidth="lg">
   <ScalableDevelopment />
 </Container>
+
+
 
 
 

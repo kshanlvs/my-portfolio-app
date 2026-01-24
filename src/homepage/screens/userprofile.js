@@ -3,21 +3,22 @@ import { Avatar, Typography, Box, Button, styled } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import DownloadIcon from '@mui/icons-material/Download';
 import { motion } from 'framer-motion';
+import profileImg from '../../assets/user-profile.png';
 
 // ===== Styled Buttons =====
 const HireButton = styled(Button)(({ theme }) => ({
-  height: 50,
-  width: 250,
-  backgroundColor: '#FFA500',
+  height: 52,
+  width: 260,
+  background: 'linear-gradient(135deg, #FFA500, #FF8C00)',
   color: '#002147',
-  fontSize: 18,
-  fontWeight: 'bold',
-  borderRadius: '12px',
+  fontSize: 17,
+  fontWeight: 700,
+  borderRadius: '14px',
   textTransform: 'none',
+  boxShadow: '0 10px 30px rgba(255,165,0,0.35)',
   '&:hover': {
-    backgroundColor: '#FF8C00',
-    transform: 'translateY(-2px)',
-    transition: 'all 0.3s ease',
+    transform: 'translateY(-3px)',
+    boxShadow: '0 15px 40px rgba(255,165,0,0.45)',
   },
   [theme.breakpoints.down('sm')]: {
     width: '100%',
@@ -25,35 +26,32 @@ const HireButton = styled(Button)(({ theme }) => ({
 }));
 
 const ResumeButton = styled(Button)(({ theme }) => ({
-  height: 50,
-  width: 250,
-  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+  height: 52,
+  width: 260,
+  backgroundColor: 'rgba(255,255,255,0.08)',
+  backdropFilter: 'blur(8px)',
   color: '#FFA500',
-  fontSize: 18,
-  fontWeight: 'bold',
-  borderRadius: '12px',
+  fontSize: 17,
+  fontWeight: 600,
+  borderRadius: '14px',
   textTransform: 'none',
+  border: '1px solid rgba(255,165,0,0.4)',
   '&:hover': {
     backgroundColor: '#FFA500',
     color: '#002147',
-    transform: 'translateY(-2px)',
-    transition: 'all 0.3s ease',
+    transform: 'translateY(-3px)',
   },
   [theme.breakpoints.down('sm')]: {
     width: '100%',
   },
 }));
 
-// ===== Resume Handlers =====
-const resumeUrl = 'https://drive.google.com/uc?export=download&id=1iTl-VVt3bSyEZhdobS9rhw4yFv_Zy6Bm';
+// ===== Resume Handler =====
+const resumeUrl =
+  'https://drive.google.com/uc?export=download&id=1iTl-VVt3bSyEZhdobS9rhw4yFv_Zy6Bm';
 
 const handleDownload = () => {
-  const link = document.createElement('a');
-  link.href = resumeUrl;
-  link.download = 'kishan_sharma_resume.pdf';
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+  window.open(resumeUrl, '_blank');
 };
 
 // ===== Main Component =====
@@ -61,93 +59,92 @@ const UserProfile = () => {
   return (
     <Box
       id="user-profile"
-      display="flex"
-      flexDirection="column"
-      alignItems="center"
-      justifyContent="center"
-      py={{ xs: 6, md: 12 }}
-      px={{ xs: 2, md: 8 }}
+      py={{ xs: 8, md: 14 }}
+      px={{ xs: 3, md: 10 }}
       sx={{
-        background: 'linear-gradient(135deg, #1a1a1a 0%, #111 100%)',
-        borderRadius: '20px',
+        background:
+          'linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))',
+        backdropFilter: 'blur(12px)',
+        borderRadius: '24px',
         textAlign: 'center',
         color: 'white',
+        boxShadow: '0 30px 80px rgba(0,0,0,0.6)',
       }}
     >
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0, y: 60 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.9 }}
       >
-        <Avatar
-          alt="Kishan Sharma"
-          src="/images/user-profile.png"
+        {/* Avatar */}
+        <Box
           sx={{
-            width: { xs: 140, sm: 180, md: 220 },
-            height: { xs: 140, sm: 180, md: 220 },
-            margin: '0 auto',
-            border: '4px solid #FFA500',
-            boxShadow: '0px 10px 30px rgba(255, 165, 0, 0.4)',
-          }}
-        />
-
-        <Typography
-          variant="h4"
-          sx={{
-            mt: 3,
-            fontWeight: 'bold',
-            fontSize: { xs: 24, sm: 32, md: 40 },
+            display: 'inline-flex',
+            p: '6px',
+            borderRadius: '50%',
+            background: 'linear-gradient(135deg, #FFA500, #FF8C00)',
           }}
         >
-          Hi, I'm Kishan Sharma
+          <Avatar
+            src={profileImg}
+            alt="Kishan Sharma"
+            sx={{
+              width: { xs: 150, sm: 190, md: 230 },
+              height: { xs: 150, sm: 190, md: 230 },
+              border: '5px solid #111',
+            }}
+          />
+        </Box>
+
+        <Typography
+          sx={{
+            mt: 4,
+            fontWeight: 800,
+            fontSize: { xs: 26, sm: 34, md: 42 },
+          }}
+        >
+          Hi, I’m Kishan Sharma
         </Typography>
 
         <Typography
-          variant="h6"
           sx={{
             mt: 1.5,
             color: '#FFA500',
             fontSize: { xs: 16, sm: 18, md: 20 },
-            fontWeight: 500,
+            fontWeight: 600,
           }}
         >
-          Flutter & Fullstack Developer
+          Flutter & Full-Stack Developer
         </Typography>
 
         <Typography
-          variant="body1"
           sx={{
-            mt: 2.5,
-            color: '#b0b0b0',
-            maxWidth: { xs: '90%', sm: '80%', md: '700px' },
+            mt: 3,
+            color: '#cfcfcf',
+            maxWidth: 720,
+            mx: 'auto',
             fontSize: { xs: 14, sm: 16, md: 18 },
-            lineHeight: 1.6,
+            lineHeight: 1.7,
           }}
         >
-          I specialize in building beautiful and responsive mobile and web applications with Flutter, React, and Firebase. Passionate about clean architecture, scalability, and creating delightful user experiences.
+          I build scalable, high-performance mobile and web applications using
+          Flutter, React, and Firebase. I focus on clean architecture, smooth
+          UX, and production-ready solutions.
         </Typography>
 
-        {/* Buttons */}
+        {/* CTA Buttons */}
         <Box
+          mt={5}
           display="flex"
+          gap={2.5}
           flexDirection={{ xs: 'column', sm: 'row' }}
-          gap={2}
           justifyContent="center"
-          mt={4}
         >
-          <HireButton
-            variant="contained"
-            endIcon={<ArrowForwardIcon />}
-            onClick={() => alert('Hire me clicked!')}
-          >
-            HIRE ME
+          <HireButton endIcon={<ArrowForwardIcon />}>
+            Hire Me
           </HireButton>
 
-          <ResumeButton
-            variant="contained"
-            endIcon={<DownloadIcon />}
-            onClick={handleDownload}
-          >
+          <ResumeButton endIcon={<DownloadIcon />}>
             Download Resume
           </ResumeButton>
         </Box>
