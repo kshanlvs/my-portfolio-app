@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 // ===== Styled Components =====
 const SectionWrapper = styled(Box)({
-  background: "linear-gradient(135deg, #1a1a1a 0%, #111 100%)",
+  // background: "linear-gradient(135deg, #1a1a1a 0%, #111 100%)",
   color: "white",
   padding: "80px 40px",
   borderRadius: "20px",

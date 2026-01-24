@@ -8,7 +8,6 @@ import ScalabilitySection from "./homepage/screens/scalability";
 import AgileSection from "./homepage/screens/agile";
 import ScalableDevelopment from "./homepage/screens/scalableDevelopment";
 import ContactSection from "./homepage/screens/contact";
-import FeaturesSection from "./homepage/screens/features_section"; // <-- new import
 
 function App() {
   return (
@@ -51,20 +50,6 @@ function App() {
       >
         <Container maxWidth="lg">
           <ProjectsSection />
-        </Container>
-      </Box>
-
-      {/* ===== Features Section ===== */}
-      <Box
-        id="features"
-        sx={{
-          backgroundColor: "#1e293b", // slightly lighter dark
-          py: 12,
-          color: "#f8fafc",
-        }}
-      >
-        <Container maxWidth="lg">
-          <FeaturesSection />
         </Container>
       </Box>
 
