@@ -1,15 +1,28 @@
 {
   "files": {
-    "main.js": "/my-portfolio-app/static/js/main.804002f8.js",
+    "main.js": "/my-portfolio-app/static/js/main.5288404a.js",
     "static/js/787.3fc40f50.chunk.js": "/my-portfolio-app/static/js/787.3fc40f50.chunk.js",
-    "static/media/user-profile.png": "/my-portfolio-app/static/media/user-profile.35f76583e03a39ef613b.png",
+    "static/media/user-profile.png": "/my-portfolio-app/static/media/user-profile.eec63eb3345507c49277.png",
     "static/media/aws_certificate.png": "/my-portfolio-app/static/media/aws_certificate.a4638351bde7c9d5f144.png",
+    "static/media/atpl.png": "/my-portfolio-app/static/media/atpl.93941af173655e9ea4b5.png",
+    "static/media/java-certificate.jpeg": "/my-portfolio-app/static/media/java-certificate.5996bfca6d2bc1741c9e.jpeg",
+    "static/media/aseztak.png": "/my-portfolio-app/static/media/aseztak.2d36d4d038fa4e65ccbe.png",
+    "static/media/firebase.png": "/my-portfolio-app/static/media/firebase.5aa7cf22cd45ec6bbec2.png",
+    "static/media/Flutter.png": "/my-portfolio-app/static/media/Flutter.ca94ec2db8f81a675d8b.png",
+    "static/media/tataneu.jpg": "/my-portfolio-app/static/media/tataneu.d9afc5e9e9b06169aad5.jpg",
     "static/media/jira_certificate.png": "/my-portfolio-app/static/media/jira_certificate.ad5e0a59ecde8488d0a4.png",
+    "static/media/git.png": "/my-portfolio-app/static/media/git.87a186db3e4860237185.png",
+    "static/media/react.png": "/my-portfolio-app/static/media/react.5185ea778c2c9d6d06db.png",
+    "static/media/java.png": "/my-portfolio-app/static/media/java.f91f26619da05654b2b8.png",
+    "static/media/javascript.png": "/my-portfolio-app/static/media/javascript.71a23beab09f12064284.png",
+    "static/media/aws.png": "/my-portfolio-app/static/media/aws.745d8d540fa6585d0dd2.png",
+    "static/media/mysql.png": "/my-portfolio-app/static/media/mysql.e17ab296b84284a67edc.png",
+    "static/media/python.png": "/my-portfolio-app/static/media/python.c038d6e950c57ddc3d03.png",
     "index.html": "/my-portfolio-app/index.html",
-    "main.804002f8.js.map": "/my-portfolio-app/static/js/main.804002f8.js.map",
+    "main.5288404a.js.map": "/my-portfolio-app/static/js/main.5288404a.js.map",
     "787.3fc40f50.chunk.js.map": "/my-portfolio-app/static/js/787.3fc40f50.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.804002f8.js"
+    "static/js/main.5288404a.js"
   ]
 }
