@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/my-portfolio-app/static/js/main.79bee51d.js",
+    "static/js/787.3fc40f50.chunk.js": "/my-portfolio-app/static/js/787.3fc40f50.chunk.js",
+    "index.html": "/my-portfolio-app/index.html",
+    "main.79bee51d.js.map": "/my-portfolio-app/static/js/main.79bee51d.js.map",
+    "787.3fc40f50.chunk.js.map": "/my-portfolio-app/static/js/787.3fc40f50.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.79bee51d.js"
+  ]
+}
