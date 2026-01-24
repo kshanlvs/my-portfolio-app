@@ -28,7 +28,7 @@ const Title = styled(Typography)({
 });
 
 const Highlight = styled("span")({
-  color: "#ec390c",
+  color: "#06b6d4", // cyan accent
 });
 
 const Description = styled(Typography)({
@@ -49,11 +49,11 @@ const ItemCard = styled(Box)({
   border: "1px solid rgba(255, 255, 255, 0.1)",
   "&:hover": {
     transform: "translateY(-8px)",
-    boxShadow: "0 10px 30px rgba(236, 57, 12, 0.3)",
+    boxShadow: "0 10px 30px rgba(6, 182, 212, 0.3)", // cyan shadow on hover
   },
   svg: {
     fontSize: "3rem",
-    color: "#ec390c",
+    color: "#06b6d4", // cyan icon color
     marginBottom: "15px",
   },
 });
@@ -111,7 +111,7 @@ const ScalableDevelopment = () => {
             >
               <ItemCard>
                 {item.icon}
-                <Typography variant="h6" sx={{ fontWeight: 600, color: "#ec390c", mb: 1 }}>
+                <Typography variant="h6" sx={{ fontWeight: 600, color: "#06b6d4", mb: 1 }}>
                   {item.title}
                 </Typography>
                 <Typography variant="body1" sx={{ color: "#b0b0b0" }}>

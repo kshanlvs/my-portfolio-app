@@ -7,7 +7,8 @@ const Project2 = () => {
   return (
     <Box
       sx={{
-        py: 10,
+        py: { xs: 8, md: 12 },
+        px: { xs: 3, md: 0 },
       }}
     >
       <Grid
@@ -15,14 +16,15 @@ const Project2 = () => {
         spacing={6}
         alignItems="center"
         sx={{
-          flexDirection: { xs: "column-reverse", md: "row" }, // swap order on mobile
+          flexDirection: { xs: "column-reverse", md: "row" },
         }}
       >
-        {/* 🧠 Text Section */}
+        {/* Text Section */}
         <Grid item xs={12} md={6}>
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
             <Typography
@@ -43,7 +45,7 @@ const Project2 = () => {
               sx={{
                 color: "white",
                 fontWeight: 700,
-                mb: 2,
+                mb: 3,
               }}
             >
               Aseztak Wholesale Online App
@@ -54,32 +56,33 @@ const Project2 = () => {
               sx={{
                 color: "grey.400",
                 fontSize: "1.1rem",
-                lineHeight: 1.6,
-                mb: 3,
+                lineHeight: 1.7,
+                mb: 4,
                 maxWidth: "90%",
               }}
             >
-              A modern B2B e-commerce platform designed for wholesalers and
-              retailers. This app enables easy bulk ordering, live inventory
-              tracking, and seamless supplier–buyer interactions.
+              A modern B2B e-commerce platform for wholesalers and retailers. Manage bulk
+              orders, live inventory, and supplier–buyer interactions seamlessly.
             </Typography>
 
             <Button
               endIcon={<LaunchIcon />}
               variant="contained"
-              href="https://example.com"
+              href="https://aseztak.com"
               target="_blank"
               sx={{
-                backgroundColor: "#ec390c",
+                background: "linear-gradient(90deg, #ec390c 0%, #ff5c33 100%)",
                 color: "white",
                 px: 4,
-                py: 1.2,
-                borderRadius: "8px",
-                fontWeight: "bold",
+                py: 1.5,
+                borderRadius: "10px",
+                fontWeight: 600,
                 textTransform: "none",
+                fontSize: "1rem",
                 "&:hover": {
-                  backgroundColor: "#ff4b1f",
+                  background: "linear-gradient(90deg, #ff5c33 0%, #ec390c 100%)",
                   transform: "translateY(-2px)",
+                  boxShadow: "0 10px 25px rgba(236, 57, 12, 0.4)",
                   transition: "all 0.3s ease",
                 },
               }}
@@ -89,11 +92,12 @@ const Project2 = () => {
           </motion.div>
         </Grid>
 
-        {/* 🖼 Image Section */}
+        {/* Image Section */}
         <Grid item xs={12} md={6}>
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
             <Box
@@ -103,7 +107,7 @@ const Project2 = () => {
               sx={{
                 width: "100%",
                 height: "auto",
-                borderRadius: "16px",
+                borderRadius: "20px",
                 boxShadow: "0px 20px 60px rgba(0, 0, 0, 0.6)",
                 transition: "transform 0.4s ease, box-shadow 0.4s ease",
                 "&:hover": {

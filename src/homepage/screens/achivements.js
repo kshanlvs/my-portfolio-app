@@ -1,16 +1,8 @@
 import React from "react";
-import {
-  Box,
-  Card,
-  CardMedia,
-  Grid,
-  Typography,
-  Link,
-  Container,
-} from "@mui/material";
-
+import { Box, Card, CardMedia, Grid, Typography, Link, Container } from "@mui/material";
 import awsCert from "../../assets/aws_certificate.png";
 import jiraCert from "../../assets/jira_certificate.png";
+import javaCert from "../../assets/java-certificate.jpeg";
 
 const certificates = [
   {
@@ -23,32 +15,45 @@ const certificates = [
     image: jiraCert,
     link: "https://university.atlassian.com/student/award/okMNHBZvq7DWQyvCpbV5pyxi",
   },
+  {
+    id: 3,
+    image: javaCert,
+    link: "https://example.com/java-certificate",
+  },
 ];
 
 function AchievementsSection() {
   return (
     <Box
       sx={{
-        background: "linear-gradient(135deg, #0e0e11, #15151c)",
-        py: { xs: 10, md: 14 },
+        py: { xs: 12, md: 16 },
+        color: "#f8fafc",
       }}
     >
       <Container maxWidth="lg">
         {/* Header */}
-        <Box textAlign="center" mb={8}>
+        <Box textAlign="center" mb={10}>
           <Typography
             variant="overline"
-            sx={{ color: "#FFA500", letterSpacing: 2, fontWeight: 600 }}
+            sx={{
+              color: "#22d3ee",
+              letterSpacing: 2,
+              fontWeight: 600,
+            }}
           >
             Achievements
           </Typography>
 
           <Typography
             variant="h3"
-            sx={{ fontWeight: 800, color: "white", mt: 1 }}
+            sx={{
+              fontWeight: 800,
+              color: "#f8fafc",
+              mt: 1,
+            }}
           >
             Certificates &{" "}
-            <Box component="span" sx={{ color: "#FFA500" }}>
+            <Box component="span" sx={{ color: "#22d3ee" }}>
               Badges
             </Box>
           </Typography>
@@ -56,33 +61,36 @@ function AchievementsSection() {
           <Typography
             sx={{
               mt: 2,
-              color: "#bdbdbd",
-              maxWidth: 600,
+              color: "#cbd5e1",
+              maxWidth: 650,
               mx: "auto",
-              fontSize: "1.05rem",
+              fontSize: "1.1rem",
+              lineHeight: 1.6,
             }}
           >
-            Industry-recognized certifications that reflect my commitment to
-            scalable systems, modern tooling, and continuous learning.
+            These industry-recognized certifications demonstrate my expertise in
+            modern web & mobile development, cloud technologies, and agile
+            practices.
           </Typography>
         </Box>
 
-        {/* Grid */}
-        <Grid container spacing={5} justifyContent="center">
+        {/* Certificates Grid */}
+        <Grid container spacing={6} justifyContent="center">
           {certificates.map((cert) => (
             <Grid item xs={12} sm={6} md={4} key={cert.id}>
               <Link href={cert.link} target="_blank" underline="none">
                 <Card
                   sx={{
                     borderRadius: 3,
-                    background: "rgba(255,255,255,0.04)",
-                    backdropFilter: "blur(10px)",
-                    border: "1px solid rgba(255,255,255,0.08)",
-                    transition: "all 0.35s ease",
+                    backgroundColor: "#0f172a", // slightly lighter than current
+                    boxShadow: "0 10px 30px rgba(0,0,0,0.4)",
+                    transition: "transform 0.3s ease, box-shadow 0.3s ease",
                     "&:hover": {
-                      transform: "translateY(-6px)",
-                      boxShadow: "0 18px 45px rgba(255,165,0,0.25)",
+                      transform: "translateY(-10px) scale(1.03)",
+                      boxShadow: "0 20px 50px rgba(34,211,238,0.5)",
                     },
+                    cursor: "pointer",
+                    overflow: "hidden",
                   }}
                 >
                   <CardMedia
@@ -91,10 +99,9 @@ function AchievementsSection() {
                     alt="Certificate"
                     loading="lazy"
                     sx={{
-                      height: 240,
-                      objectFit: "contain",
-                      p: 2,
-                      backgroundColor: "#0b0b0f",
+                      height: { xs: 280, md: 320 },
+                      width: "100%",
+                      objectFit: "cover", // show full image clearly
                     }}
                   />
                 </Card>

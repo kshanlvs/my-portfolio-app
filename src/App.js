@@ -2,36 +2,26 @@ import React from "react";
 import { Container, Box, CssBaseline } from "@mui/material";
 import ResponsiveAppBar from "./homepage/screens/homepage";
 import UserProfile from "./homepage/screens/userprofile";
-import ProjectsSection from "./homepage/screens/projects"; // <-- merged component
+import ProjectsSection from "./homepage/screens/projects";
 import Achievements from "./homepage/screens/achivements";
 import ScalabilitySection from "./homepage/screens/scalability";
 import AgileSection from "./homepage/screens/agile";
 import ScalableDevelopment from "./homepage/screens/scalableDevelopment";
-import ContactSection from "./homepage/screens/contact"; // <-- new import
-
-
-
-<Container maxWidth="lg">
-  <ScalableDevelopment />
-</Container>
-
-
-
-
-
+import ContactSection from "./homepage/screens/contact";
+import FeaturesSection from "./homepage/screens/features_section"; // <-- new import
 
 function App() {
   return (
     <>
       <CssBaseline />
 
-      {/* Header Section */}
+      {/* ===== Header Section ===== */}
       <Box
         id="user-profile"
         sx={{
           minHeight: "100vh",
-          background: "linear-gradient(135deg, #0a0a0a 40%, #1c1c1c 100%)",
-          color: "#fff",
+          backgroundColor: "#0f172a", // dark slate
+          color: "#f8fafc",
         }}
       >
         <ResponsiveAppBar />
@@ -50,13 +40,13 @@ function App() {
         </Container>
       </Box>
 
-      {/* Projects & Skills Section */}
+      {/* ===== Projects Section ===== */}
       <Box
         id="projects"
         sx={{
-          background: "linear-gradient(135deg, #111 0%, #0e1a24 100%)",
+          backgroundColor: "#111827",
           py: 12,
-          color: "white",
+          color: "#f8fafc",
         }}
       >
         <Container maxWidth="lg">
@@ -64,64 +54,69 @@ function App() {
         </Container>
       </Box>
 
-      {/* Scalability & Architecture Section */}
-<Box
-  sx={{
-    background: "linear-gradient(135deg, #1a1a1a 0%, #111 100%)",
-    color: "white",
-    py: 12,
-  }}
->
-  <Container maxWidth="lg">
-    <ScalabilitySection />
-  </Container>
-</Box>
-{/* Agile Methodology Section */}
-<Box
-  sx={{
-    background: "linear-gradient(135deg, #111 0%, #1a1a24 100%)",
-    color: "white",
-    py: 12,
-  }}
->
-  <Container maxWidth="lg">
-    <AgileSection />
-  </Container>
-</Box>
-{/* Scalable Development Section */}
-<Box
-  id="scalable-development"
-  sx={{
-    background: "linear-gradient(135deg, #1c1c1c 0%, #2a2a2a 100%)",
-    color: "white",
-    py: 12,
-  }}
->
-  <Container maxWidth="lg">
-    <ScalableDevelopment />
-  </Container>
-</Box>
-   {/* <Box
-        id="side-projects"
+      {/* ===== Features Section ===== */}
+      <Box
+        id="features"
         sx={{
-          background: "linear-gradient(135deg, #111 0%, #1a1a24 100%)",
-          color: "white",
+          backgroundColor: "#1e293b", // slightly lighter dark
           py: 12,
+          color: "#f8fafc",
         }}
       >
         <Container maxWidth="lg">
-          <SideProjects />
+          <FeaturesSection />
         </Container>
-      </Box> */}
+      </Box>
 
+      {/* ===== Scalability Section ===== */}
+      <Box
+        id="scalability"
+        sx={{
+          backgroundColor: "#1e293b",
+          py: 12,
+          color: "#f8fafc",
+        }}
+      >
+        <Container maxWidth="lg">
+          <ScalabilitySection />
+        </Container>
+      </Box>
 
-      {/* Achievements */}
+      {/* ===== Agile Methodology Section ===== */}
+      <Box
+        id="agile"
+        sx={{
+          backgroundColor: "#111827",
+          py: 12,
+          color: "#f8fafc",
+        }}
+      >
+        <Container maxWidth="lg">
+          <AgileSection />
+        </Container>
+      </Box>
+
+      {/* ===== Scalable Development Section ===== */}
+      <Box
+        id="scalable-development"
+        sx={{
+          backgroundColor: "#1f2937",
+          py: 12,
+          color: "#f8fafc",
+        }}
+      >
+        <Container maxWidth="lg">
+          <ScalableDevelopment />
+        </Container>
+      </Box>
+
+      {/* ===== Achievements Section ===== */}
       <Box
         id="achievements"
         sx={{
-          background: "linear-gradient(135deg, #0f2027, #203a43, #2c5364)",
-          color: "white",
+          backgroundColor: "#0f172a",
           py: 12,
+          color: "#f8fafc",
         }}
       >
         <Container maxWidth="lg">
@@ -129,22 +124,21 @@ function App() {
         </Container>
       </Box>
 
-           <Box
+      {/* ===== Contact Section ===== */}
+      <Box
         id="contacts"
         sx={{
-          background: "linear-gradient(135deg, #0f2027, #203a43, #2c5364)",
-          color: "white",
+          backgroundColor: "#0f172a",
           py: 12,
+          color: "#f8fafc",
         }}
       >
         <Container maxWidth="lg">
-            <ContactSection />
+          <ContactSection />
         </Container>
       </Box>
 
-         
-
-      {/* Footer */}
+      {/* ===== Footer ===== */}
       <Box
         sx={{
           backgroundColor: "#000",

@@ -1,154 +1,147 @@
-import React from 'react';
-import { Avatar, Typography, Box, Button, styled } from '@mui/material';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import DownloadIcon from '@mui/icons-material/Download';
-import { motion } from 'framer-motion';
-import profileImg from '../../assets/user-profile.png';
+import React from "react";
+import { Box, Typography, Button, Container, Avatar, styled } from "@mui/material";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import DownloadIcon from "@mui/icons-material/Download";
+import { motion } from "framer-motion";
+import profileImg from "../../assets/user-profile.png";
 
 // ===== Styled Buttons =====
-const HireButton = styled(Button)(({ theme }) => ({
+const PrimaryButton = styled(Button)(({ theme }) => ({
   height: 52,
-  width: 260,
-  background: 'linear-gradient(135deg, #FFA500, #FF8C00)',
-  color: '#002147',
-  fontSize: 17,
-  fontWeight: 700,
-  borderRadius: '14px',
-  textTransform: 'none',
-  boxShadow: '0 10px 30px rgba(255,165,0,0.35)',
-  '&:hover': {
-    transform: 'translateY(-3px)',
-    boxShadow: '0 15px 40px rgba(255,165,0,0.45)',
-  },
-  [theme.breakpoints.down('sm')]: {
-    width: '100%',
-  },
-}));
-
-const ResumeButton = styled(Button)(({ theme }) => ({
-  height: 52,
-  width: 260,
-  backgroundColor: 'rgba(255,255,255,0.08)',
-  backdropFilter: 'blur(8px)',
-  color: '#FFA500',
-  fontSize: 17,
+  padding: "0 32px",
+  background: "#2563eb", // electric blue
+  color: "#ffffff",
   fontWeight: 600,
-  borderRadius: '14px',
-  textTransform: 'none',
-  border: '1px solid rgba(255,165,0,0.4)',
-  '&:hover': {
-    backgroundColor: '#FFA500',
-    color: '#002147',
-    transform: 'translateY(-3px)',
-  },
-  [theme.breakpoints.down('sm')]: {
-    width: '100%',
+  textTransform: "none",
+  borderRadius: 10,
+  transition: "all 0.3s ease",
+  "&:hover": {
+    background: "#1e40af",
+    transform: "translateY(-2px)",
   },
 }));
 
-// ===== Resume Handler =====
+const SecondaryButton = styled(Button)(({ theme }) => ({
+  height: 52,
+  padding: "0 32px",
+  background: "rgba(255,255,255,0.05)",
+  color: "#2563eb",
+  fontWeight: 600,
+  textTransform: "none",
+  borderRadius: 10,
+  border: "1px solid #2563eb",
+  transition: "all 0.3s ease",
+  "&:hover": {
+    background: "#2563eb",
+    color: "#ffffff",
+  },
+}));
+
 const resumeUrl =
-  'https://drive.google.com/uc?export=download&id=1iTl-VVt3bSyEZhdobS9rhw4yFv_Zy6Bm';
+  "https://drive.google.com/uc?export=download&id=1L9Mi-W_CrFBnE_KXT_r-UZCa3AuPOTc7";
 
-const handleDownload = () => {
-  window.open(resumeUrl, '_blank');
-};
-
-// ===== Main Component =====
 const UserProfile = () => {
   return (
     <Box
-      id="user-profile"
-      py={{ xs: 8, md: 14 }}
-      px={{ xs: 3, md: 10 }}
       sx={{
-        background:
-          'linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))',
-        backdropFilter: 'blur(12px)',
-        borderRadius: '24px',
-        textAlign: 'center',
-        color: 'white',
-        boxShadow: '0 30px 80px rgba(0,0,0,0.6)',
+        minHeight: "90vh",
+        display: "flex",
+        alignItems: "center",
+        backgroundColor: "#0f172a", // deep slate
+        color: "#f8fafc",
       }}
     >
-      <motion.div
-        initial={{ opacity: 0, y: 60 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9 }}
-      >
-        {/* Avatar */}
+      <Container maxWidth="lg">
         <Box
-          sx={{
-            display: 'inline-flex',
-            p: '6px',
-            borderRadius: '50%',
-            background: 'linear-gradient(135deg, #FFA500, #FF8C00)',
-          }}
+          display="grid"
+          gridTemplateColumns={{ xs: "1fr", md: "1.2fr 0.8fr" }}
+          gap={8}
+          alignItems="center"
         >
-          <Avatar
-            src={profileImg}
-            alt="Kishan Sharma"
-            sx={{
-              width: { xs: 150, sm: 190, md: 230 },
-              height: { xs: 150, sm: 190, md: 230 },
-              border: '5px solid #111',
-            }}
-          />
+          {/* Text Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <Typography
+              variant="overline"
+              sx={{ color: "#60a5fa", letterSpacing: 2 }}
+            >
+              FLUTTER & FULL-STACK DEVELOPER
+            </Typography>
+
+            <Typography
+              sx={{
+                mt: 2,
+                fontSize: { xs: 32, md: 44 },
+                fontWeight: 800,
+              }}
+            >
+              Building <span style={{ color: "#22d3ee" }}>scalable web & mobile</span> apps
+            </Typography>
+
+            <Typography
+              sx={{
+                mt: 3,
+                fontSize: 17,
+                color: "#cbd5e1",
+                maxWidth: 600,
+                lineHeight: 1.7,
+              }}
+            >
+              Hi, I’m <strong>Kishan Sharma</strong>. I craft high-quality, production-ready applications using Flutter, React, and Firebase with clean architecture and smooth UX.
+            </Typography>
+
+            <Box mt={5} display="flex" gap={2} flexWrap="wrap">
+              <PrimaryButton endIcon={<ArrowForwardIcon />}>Hire Me</PrimaryButton>
+              <SecondaryButton
+                endIcon={<DownloadIcon />}
+                onClick={() => window.open(resumeUrl, "_blank")}
+              >
+                Resume
+              </SecondaryButton>
+            </Box>
+          </motion.div>
+
+          {/* Avatar */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                position: "relative",
+              }}
+            >
+              <Avatar
+                src={profileImg}
+                sx={{
+                  width: { xs: 180, sm: 220, md: 260 },
+                  height: { xs: 180, sm: 220, md: 260 },
+                  border: "4px solid #1e293b",
+                  boxShadow: "0 20px 40px rgba(34,211,238,0.25)",
+                }}
+              />
+              <Box
+                sx={{
+                  position: "absolute",
+                  width: "120%",
+                  height: "120%",
+                  borderRadius: "50%",
+                  border: "2px solid #2563eb",
+                  top: "-10%",
+                  left: "-10%",
+                  animation: "pulse 2s infinite",
+                }}
+              />
+            </Box>
+          </motion.div>
         </Box>
-
-        <Typography
-          sx={{
-            mt: 4,
-            fontWeight: 800,
-            fontSize: { xs: 26, sm: 34, md: 42 },
-          }}
-        >
-          Hi, I’m Kishan Sharma
-        </Typography>
-
-        <Typography
-          sx={{
-            mt: 1.5,
-            color: '#FFA500',
-            fontSize: { xs: 16, sm: 18, md: 20 },
-            fontWeight: 600,
-          }}
-        >
-          Flutter & Full-Stack Developer
-        </Typography>
-
-        <Typography
-          sx={{
-            mt: 3,
-            color: '#cfcfcf',
-            maxWidth: 720,
-            mx: 'auto',
-            fontSize: { xs: 14, sm: 16, md: 18 },
-            lineHeight: 1.7,
-          }}
-        >
-          I build scalable, high-performance mobile and web applications using
-          Flutter, React, and Firebase. I focus on clean architecture, smooth
-          UX, and production-ready solutions.
-        </Typography>
-
-        {/* CTA Buttons */}
-        <Box
-          mt={5}
-          display="flex"
-          gap={2.5}
-          flexDirection={{ xs: 'column', sm: 'row' }}
-          justifyContent="center"
-        >
-          <HireButton endIcon={<ArrowForwardIcon />}>
-            Hire Me
-          </HireButton>
-
-          <ResumeButton endIcon={<DownloadIcon />}>
-            Download Resume
-          </ResumeButton>
-        </Box>
-      </motion.div>
+      </Container>
     </Box>
   );
 };

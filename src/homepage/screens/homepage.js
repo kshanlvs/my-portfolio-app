@@ -1,24 +1,29 @@
+// src/homepage/screens/ResponsiveAppBar.js
 import React, { useState, useEffect } from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  IconButton,
+  Typography,
+  Menu,
+  Container,
+  Avatar,
+  Button,
+  Tooltip,
+  MenuItem
+} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
-const pages = [
-  { label: "Profile", href: "#user-profile" },
-  { label: "Projects", href: "#projects" },
-  { label: "Scalability", href: "#scalability" },
-  { label: "Achievements", href: "#achievements" },
-];
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
+const pages = [
+  { label: 'Profile', href: '#user-profile' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Scalability', href: '#scalability' },
+  { label: 'Achievements', href: '#achievements' },
+  { label: 'Contact', href: '#contact' },
+];
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
@@ -32,20 +37,16 @@ function ResponsiveAppBar() {
   const handleCloseNavMenu = () => setAnchorElNav(null);
   const handleCloseUserMenu = () => setAnchorElUser(null);
 
-const handleNavClick = (href) => {
-  const section = document.querySelector(href);
-  if (section) {
-    section.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-  handleCloseNavMenu();
-};
+  const handleNavClick = (href) => {
+    const section = document.querySelector(href);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    handleCloseNavMenu();
+  };
 
-
-  // Add shadow on scroll
   useEffect(() => {
-    const handleScroll = () => {
-      setElevated(window.scrollY > 20);
-    };
+    const handleScroll = () => setElevated(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -53,27 +54,29 @@ const handleNavClick = (href) => {
   return (
     <AppBar
       position="fixed"
-      elevation={elevated ? 4 : 0}
+      elevation={elevated ? 6 : 0}
       sx={{
-        backgroundColor: elevated ? 'rgba(0,0,0,0.85)' : 'transparent',
+        background: elevated
+          ? 'rgba(15,23,42,0.95)' // dark cyan shade with opacity
+          : 'transparent',
+        backdropFilter: 'blur(12px)',
         transition: 'all 0.3s ease',
       }}
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* Logo Desktop */}
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, color: 'orange' }} />
           <Typography
             variant="h6"
             noWrap
             component="a"
-            href="#skills"
+            href="#user-profile"
             sx={{
-              mr: 2,
+              mr: 4,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
-              color: 'orange',
+              color: '#06b6d4', // cyan accent
               textDecoration: 'none',
               cursor: 'pointer',
             }}
@@ -83,8 +86,12 @@ const handleNavClick = (href) => {
 
           {/* Mobile Menu */}
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton size="large" onClick={handleOpenNavMenu} color="inherit">
-              <MenuIcon sx={{ color: 'orange' }} />
+            <IconButton
+              size="large"
+              onClick={handleOpenNavMenu}
+              sx={{ color: '#06b6d4' }}
+            >
+              <MenuIcon />
             </IconButton>
             <Menu
               anchorEl={anchorElNav}
@@ -104,22 +111,19 @@ const handleNavClick = (href) => {
           </Box>
 
           {/* Logo Mobile */}
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1, color: 'orange' }} />
           <Typography
             variant="h5"
             noWrap
             component="a"
-            href="#skills"
+            href="#user-profile"
             sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
+              display: { xs: 'flex', md: 'none' },
               fontFamily: 'monospace',
               fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'orange',
+              letterSpacing: '.2rem',
+              color: '#06b6d4',
               textDecoration: 'none',
-              cursor: 'pointer',
             }}
           >
             K.S.
@@ -131,20 +135,51 @@ const handleNavClick = (href) => {
               <Button
                 key={page.label}
                 onClick={() => handleNavClick(page.href)}
-                sx={{ my: 2, color: 'orange', display: 'block' }}
+                sx={{
+                  my: 2,
+                  color: '#06b6d4',
+                  display: 'block',
+                  fontWeight: 600,
+                  mx: 1.5,
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    color: '#22d3ee',
+                    transform: 'translateY(-2px)',
+                  },
+                }}
               >
                 {page.label}
               </Button>
             ))}
           </Box>
 
-          {/* Avatar Menu */}
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar sx={{ bgcolor: 'orange', color: 'black' }}>K</Avatar>
+          {/* Social / Avatar Menu */}
+          <Box sx={{ flexGrow: 0, display: 'flex', alignItems: 'center' }}>
+            <Tooltip title="GitHub">
+              <IconButton
+                href="https://github.com/kshanlvs"
+                target="_blank"
+                sx={{ color: '#06b6d4', mx: 0.5 }}
+              >
+                <GitHubIcon />
               </IconButton>
             </Tooltip>
+            <Tooltip title="LinkedIn">
+              <IconButton
+                href="https://www.linkedin.com/in/kishan-kumar-sharma-8a24b5b7"
+                target="_blank"
+                sx={{ color: '#06b6d4', mx: 0.5 }}
+              >
+                <LinkedInIcon />
+              </IconButton>
+            </Tooltip>
+
+            <Tooltip title="Profile Settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, ml: 2 }}>
+                <Avatar sx={{ bgcolor: '#06b6d4', color: '#0f172a' }}>K</Avatar>
+              </IconButton>
+            </Tooltip>
+
             <Menu
               sx={{ mt: '45px' }}
               anchorEl={anchorElUser}
