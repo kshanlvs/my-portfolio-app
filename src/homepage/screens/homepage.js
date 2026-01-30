@@ -20,22 +20,20 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 const pages = [
   { label: 'Profile', href: '#user-profile' },
   { label: 'Projects', href: '#projects' },
+  { label: 'Skills', href: '#skills' },
   { label: 'Scalability', href: '#scalability' },
+  { label: 'Agile', href: '#agile' },
+  { label: 'Scalable Dev', href: '#scalable-development' },
   { label: 'Achievements', href: '#achievements' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Contact', href: '#contacts' },
 ];
-
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
-  const [anchorElUser, setAnchorElUser] = useState(null);
   const [elevated, setElevated] = useState(false);
 
   const handleOpenNavMenu = (event) => setAnchorElNav(event.currentTarget);
-  const handleOpenUserMenu = (event) => setAnchorElUser(event.currentTarget);
   const handleCloseNavMenu = () => setAnchorElNav(null);
-  const handleCloseUserMenu = () => setAnchorElUser(null);
 
   const handleNavClick = (href) => {
     const section = document.querySelector(href);
@@ -50,6 +48,13 @@ function ResponsiveAppBar() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleProfileClick = () => {
+    const profileSection = document.querySelector('#user-profile');
+    if (profileSection) {
+      profileSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   return (
     <AppBar
@@ -140,7 +145,8 @@ function ResponsiveAppBar() {
                   color: '#06b6d4',
                   display: 'block',
                   fontWeight: 600,
-                  mx: 1.5,
+                  mx: 1,
+                  fontSize: '0.875rem',
                   transition: 'all 0.3s ease',
                   '&:hover': {
                     color: '#22d3ee',
@@ -153,7 +159,7 @@ function ResponsiveAppBar() {
             ))}
           </Box>
 
-          {/* Social / Avatar Menu */}
+          {/* Social & Profile Icon */}
           <Box sx={{ flexGrow: 0, display: 'flex', alignItems: 'center' }}>
             <Tooltip title="GitHub">
               <IconButton
@@ -174,27 +180,26 @@ function ResponsiveAppBar() {
               </IconButton>
             </Tooltip>
 
-            <Tooltip title="Profile Settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, ml: 2 }}>
-                <Avatar sx={{ bgcolor: '#06b6d4', color: '#0f172a' }}>K</Avatar>
+            {/* Profile Avatar - Now scrolls to profile section instead of opening dropdown */}
+            <Tooltip title="Go to Profile">
+              <IconButton 
+                onClick={handleProfileClick}
+                sx={{ p: 0, ml: 2 }}
+              >
+                <Avatar sx={{ 
+                  bgcolor: '#06b6d4', 
+                  color: '#0f172a',
+                  fontWeight: 700,
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    transform: 'scale(1.1)',
+                    bgcolor: '#22d3ee',
+                  }
+                }}>
+                  K
+                </Avatar>
               </IconButton>
             </Tooltip>
-
-            <Menu
-              sx={{ mt: '45px' }}
-              anchorEl={anchorElUser}
-              anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-              keepMounted
-              transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
           </Box>
         </Toolbar>
       </Container>

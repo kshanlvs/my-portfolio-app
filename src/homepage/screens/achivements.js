@@ -26,19 +26,20 @@ function AchievementsSection() {
   return (
     <Box
       sx={{
-        py: { xs: 12, md: 16 },
+        py: { xs: 8, md: 12 },
         color: "#f8fafc",
       }}
     >
       <Container maxWidth="lg">
         {/* Header */}
-        <Box textAlign="center" mb={10}>
+        <Box textAlign="center" mb={{ xs: 8, md: 10 }}>
           <Typography
             variant="overline"
             sx={{
               color: "#22d3ee",
               letterSpacing: 2,
               fontWeight: 600,
+              fontSize: { xs: '0.875rem', sm: '1rem' },
             }}
           >
             Achievements
@@ -50,6 +51,7 @@ function AchievementsSection() {
               fontWeight: 800,
               color: "#f8fafc",
               mt: 1,
+              fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
             }}
           >
             Certificates &{" "}
@@ -64,8 +66,9 @@ function AchievementsSection() {
               color: "#cbd5e1",
               maxWidth: 650,
               mx: "auto",
-              fontSize: "1.1rem",
+              fontSize: { xs: '1rem', md: '1.1rem' },
               lineHeight: 1.6,
+              px: { xs: 2, md: 0 },
             }}
           >
             These industry-recognized certifications demonstrate my expertise in
@@ -75,14 +78,14 @@ function AchievementsSection() {
         </Box>
 
         {/* Certificates Grid */}
-        <Grid container spacing={6} justifyContent="center">
+        <Grid container spacing={{ xs: 4, md: 6 }} justifyContent="center">
           {certificates.map((cert) => (
             <Grid item xs={12} sm={6} md={4} key={cert.id}>
               <Link href={cert.link} target="_blank" underline="none">
                 <Card
                   sx={{
                     borderRadius: 3,
-                    backgroundColor: "#0f172a", // slightly lighter than current
+                    backgroundColor: "#0f172a",
                     boxShadow: "0 10px 30px rgba(0,0,0,0.4)",
                     transition: "transform 0.3s ease, box-shadow 0.3s ease",
                     "&:hover": {
@@ -101,7 +104,7 @@ function AchievementsSection() {
                     sx={{
                       height: { xs: 280, md: 320 },
                       width: "100%",
-                      objectFit: "cover", // show full image clearly
+                      objectFit: "cover",
                     }}
                   />
                 </Card>
